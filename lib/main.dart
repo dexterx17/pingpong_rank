@@ -1,9 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:pavalrank/src/models/user_model.dart';
+
 import 'package:pavalrank/src/services/auth.dart';
-import 'package:pavalrank/src/wrapper.dart';
 import 'package:provider/provider.dart';
+import 'package:pavalrank/src/pages/onboarding/PingPongAppSplash.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
     return StreamProvider<UserModel>.value(
         value: AuthService().user,
         child: MaterialApp(
-          home: Wrapper(),
+          debugShowCheckedModeBanner: false,
+          home: PingPongAppSplash(),
         )
       );
 

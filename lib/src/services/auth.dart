@@ -26,8 +26,31 @@ class AuthService{
     }
   }
   //sign in with email & password
+  Future loginWithEmailAndPassword(String email, String password) async {
+    try{
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      return _userFromFirebase(userCredential.user);
+    }  on FirebaseAuthException catch(e){
+      print('error logeando usuario');
+      print(e.toString());
+      return e.code;
+    }
+  }
+
+
 
   //register with email & password
+  Future registerWithEmailAndPassword(String email, String password) async {
+    try{
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      return _userFromFirebase(userCredential.user);
+    }  on FirebaseAuthException catch(e){
+      print('error registrando usuario');
+      print(e);
+      print(e.toString());
+      return e.code;
+    }
+  }
 
   //sign out
   Future signOut() async {

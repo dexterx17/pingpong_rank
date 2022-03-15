@@ -8,7 +8,10 @@ import 'package:pavalrank/src/pages/onboarding/OnboardingScreen2.dart';
 import 'package:pavalrank/src/pages/onboarding/OnboardingScreen3.dart';
 import 'package:pavalrank/src/pages/profile/Profile1.dart';
 import 'package:pavalrank/src/pages/profile/Profile2.dart';
+import 'package:pavalrank/src/pages/onboarding/PingPongAppSplash.dart';
 import 'package:pavalrank/src/pages/profile/Profile3.dart';
+import 'package:pavalrank/src/pages/authenticate/LoginActivity.dart';
+
 import 'package:provider/provider.dart';
 
 class Wrapper extends StatelessWidget {
@@ -27,7 +30,7 @@ class Wrapper extends StatelessWidget {
     print('user');
     print(user);
     if(user == null){
-      return Authenticate();
+      return LoginActivity();
     }else{
       //return profile1();
       return Profile2();
