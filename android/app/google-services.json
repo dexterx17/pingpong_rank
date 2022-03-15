@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "422992535250",
+    "project_id": "paval-9c14d",
+    "storage_bucket": "paval-9c14d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422992535250:android:4782044f628e055618d70b",
+        "android_client_info": {
+          "package_name": "ec.santana.pavalrank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422992535250-phk9g1h3ppudc9qvd5fmgcsfqj2b31lr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsAfDZs9vbc2Cgy6eNWhIkHuQ4nzBIHrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422992535250-phk9g1h3ppudc9qvd5fmgcsfqj2b31lr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
