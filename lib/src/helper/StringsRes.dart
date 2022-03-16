@@ -47,8 +47,8 @@ class StringsRes{
   static String maleText = "Male";
   static String femaleText = "Female";
   static String everyoneText = "Everyone";
-  static String identifyYourselfTitleText = "Identify yourself";
-  static String identifyYourselfDescriptionText = "Introduce yourself fill out the details so people know about you.";
+  static String identifyYourselfTitleText = "Info Jugador";
+  static String identifyYourselfDescriptionText = "Completa tus datos para ajustar tu ranking.";
   static String iAmaText = "I am a";
   static String birthdayText = "Birthday";
   static String userNameText = "User Name";

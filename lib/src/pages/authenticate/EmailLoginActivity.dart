@@ -221,7 +221,7 @@ class _EmailLoginActivityState extends State<EmailLoginActivity> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Profile2(),
+                                  builder: (context) => Home(),
                                 ),
                               );
                             }

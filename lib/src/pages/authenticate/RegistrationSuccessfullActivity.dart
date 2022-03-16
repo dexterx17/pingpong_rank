@@ -4,6 +4,8 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:pavalrank/src/pages/home/home.dart';
+
 import 'package:pavalrank/src/pages/authenticate/LoginActivity.dart';
 import 'package:pavalrank/src/helper/ColorsRes.dart';
 import 'package:pavalrank/src/helper/DesignConfig.dart';
@@ -57,12 +59,12 @@ class _RegistrationSuccessfullActivityState extends State<RegistrationSuccessful
                       ),
                       GestureDetector(
                         onTap: () {
-                          // Navigator.pushReplacement(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => InterestedActivity(),
-                          //   ),
-                          // );
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Home(),
+                            ),
+                          );
                         },
                         child: Container(decoration: DesignConfig.boxDecorationButton(ColorsRes.white,ColorsRes.white),
                             margin: EdgeInsets.only(right: 20, left: 20),

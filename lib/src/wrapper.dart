@@ -33,7 +33,7 @@ class Wrapper extends StatelessWidget {
       return LoginActivity();
     }else{
       //return profile1();
-      return Profile2();
+      return Home();
       //return profile3();
     }
   }

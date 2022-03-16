@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pavalrank/src/models/user_model.dart';
+import 'package:pavalrank/src/services/database.dart';
 
 class AuthService{
 
@@ -43,6 +44,10 @@ class AuthService{
   Future registerWithEmailAndPassword(String email, String password) async {
     try{
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+
+      // create a new document for the user with the uid
+      await DatabaseService(uid: userCredential.user.uid).updateUserData('0','new crew member',100);
+
       return _userFromFirebase(userCredential.user);
     }  on FirebaseAuthException catch(e){
       print('error registrando usuario');
