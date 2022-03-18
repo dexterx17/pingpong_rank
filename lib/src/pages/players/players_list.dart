@@ -23,7 +23,7 @@ class _PlayersListState extends State<PlayersList> {
         print('player');
         print(player);
         print('nombre: '+player.nombre);
-        print('apellido: '+player.apellido.toString());
+        print('sexo: '+player.sexo);
         print('edad: '+player.edad.toString());
       });
     }

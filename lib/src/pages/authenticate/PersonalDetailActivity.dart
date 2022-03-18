@@ -6,6 +6,7 @@ import 'package:pavalrank/src/pages/authenticate/RegistrationSuccessfullActivity
 import 'package:pavalrank/src/helper/ColorsRes.dart';
 import 'package:pavalrank/src/helper/DesignConfig.dart';
 import 'package:pavalrank/src/helper/StringsRes.dart';
+import 'package:pavalrank/src/services/auth.dart';
 
 class PersonalDetailActivity extends StatefulWidget {
   PersonalDetailActivity({Key key}) : super(key: key);
@@ -16,6 +17,18 @@ class PersonalDetailActivity extends StatefulWidget {
 
 class _PersonalDetailActivityState extends State<PersonalDetailActivity> {
   String gender = StringsRes.maleText;
+
+  String nombre = '';
+
+  String anio = '1990';
+  String mes = '';
+  String dia = '';
+
+  final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
+  bool loading = false;
+
+
   @override
   void initState() {
     super.initState();
@@ -30,7 +43,9 @@ class _PersonalDetailActivityState extends State<PersonalDetailActivity> {
               width: double.infinity,
               height: double.infinity,
               child: Center(
-                child: SingleChildScrollView(
+                child:Form(
+                  key: _formKey,
+                  child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -114,6 +129,8 @@ class _PersonalDetailActivityState extends State<PersonalDetailActivity> {
                                 alignment: Alignment.center,
                                 padding: const EdgeInsets.only(left: 10),
                                 child: TextFormField(
+                                  validator: (value) => value.isEmpty || (int.parse(value)<1 && int.parse(value) < 13) ? 'Ingrese un mes válido' : null,
+                                  onChanged: (value) => setState(() => mes = value ),
                                   style: TextStyle(color: ColorsRes.darkColor, fontSize: 20, fontWeight: FontWeight.bold),
                                   cursorColor: ColorsRes.darkColor,
                                   decoration: InputDecoration(
@@ -140,6 +157,8 @@ class _PersonalDetailActivityState extends State<PersonalDetailActivity> {
                                 alignment: Alignment.center,
                                 padding: const EdgeInsets.only(left: 10),
                                 child: TextFormField(
+                                  validator: (value) => value.isEmpty || (int.parse(value)<1 && int.parse(value) < 32) ? 'Ingrese un día válido' : null,
+                                  onChanged: (value) => setState(() => dia = value ),
                                   style: TextStyle(color: ColorsRes.darkColor, fontSize: 20, fontWeight: FontWeight.bold),
                                   cursorColor: ColorsRes.darkColor,
                                   decoration: InputDecoration(
@@ -166,6 +185,9 @@ class _PersonalDetailActivityState extends State<PersonalDetailActivity> {
                                 alignment: Alignment.center,
                                 padding: const EdgeInsets.only(left: 10),
                                 child: TextFormField(
+                                  initialValue: anio,
+                                  validator: (value) => value.isEmpty || (int.parse(value)<1 && int.parse(value) < 13) ? 'Ingrese un año válido' : null,
+                                  onChanged: (value) => setState(() => anio = value ),
                                   style: TextStyle(color: ColorsRes.darkColor, fontSize: 20, fontWeight: FontWeight.bold),
                                   cursorColor: ColorsRes.darkColor,
                                   decoration: InputDecoration(
@@ -202,6 +224,8 @@ class _PersonalDetailActivityState extends State<PersonalDetailActivity> {
                           alignment: Alignment.center,
                           padding: const EdgeInsets.only(left: 10),
                           child: TextFormField(
+                            validator: (value) => value.isEmpty ? 'Ingrese un nombre válido' : null,
+                            onChanged: (value) => setState(() => nombre = value ),
                             style: TextStyle(color: ColorsRes.darkColor, fontSize: 20, fontWeight: FontWeight.bold),
                             cursorColor: ColorsRes.darkColor,
                             decoration: InputDecoration(
@@ -222,13 +246,22 @@ class _PersonalDetailActivityState extends State<PersonalDetailActivity> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          //Navigator.pop(context);
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => RegistrationSuccessfullActivity(),
-                            ),
-                          );
+                          if(_formKey.currentState.validate()) {
+                            setState(() => loading = true);
+
+                            print('todo bien');
+                            // //Navigator.pop(context);
+                            // Navigator.pushReplacement(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) =>
+                            //         RegistrationSuccessfullActivity(),
+                            //   ),
+                            // );
+
+                          }else{
+                            print('valde el form');
+                          }
                         },
                         child: Container(decoration: DesignConfig.boxDecorationButton(ColorsRes.gradientOne,ColorsRes.gradientTwo),
                             margin: EdgeInsets.only(right: 20, left: 20),
@@ -248,6 +281,7 @@ class _PersonalDetailActivityState extends State<PersonalDetailActivity> {
                     ],
                   ),
                 ),
+                )
               ),
             ),
           ],

@@ -3,13 +3,13 @@ class UserData{
 
   UserData({
     this.uid,
-    this.nombres,
-    //this.apellidos,
+    this.nombre,
+    this.sexo,
     int edad
   });
   String uid;
-  String nombres;
-  //String apellidos;
+  String nombre;
+  String sexo;
   int edad;
 
 }

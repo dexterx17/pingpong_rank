@@ -10,11 +10,12 @@ class DatabaseService {
   //collection reference
   final CollectionReference playersCollection = FirebaseFirestore.instance.collection('players');
 
-  Future updateUserData(String sugars, String name, int stregth) async{
+  Future updateUserData(String name, String nacionalidad, String sexo, int edad) async{
     return await playersCollection.doc(uid).set({
-      'sugar' : sugars,
-      'name'  : name,
-      'strength'  : stregth
+      'nombre' : name,
+      'nacionalidad'  : nacionalidad,
+      'sexo'  : sexo,
+      'edad'  : edad
     });
   }
 
@@ -24,12 +25,12 @@ class DatabaseService {
          print('doc');
          print(doc.data());
         print(doc.get('name'));
-        print(doc.get('strength'));
-        print(doc.get('sugar'));
+        print(doc.get('nacionalidad'));
+        print(doc.get('edad'));
         return PlayerModel(
           nombre: doc.get('name') ?? '',
-          apellido: doc.get('name') ?? '',
-          edad: int.parse(doc.get('sugar')) ?? 0
+            sexo: doc.get('sexo') ?? '',
+          edad: int.parse(doc.get('edad')) ?? 0
         );
       }).toList();
 
@@ -40,12 +41,19 @@ class DatabaseService {
   }
 
   UserData _userDataFromSnapshot(DocumentSnapshot doc){
-    return UserData(
-      uid: uid,
-      nombres: doc.get('name'),
-   //   apellido: doc.get('name'),
-      edad: doc.get('sugar'),
-    );
+    print('mappaing doc');
+    print(doc);
+    try{
+      return UserData(
+        uid: uid,
+        nombre: doc.get('name'),
+        sexo: doc.get('sexo'),
+        edad: doc.get('edad'),
+      );
+    }catch(e){
+      print('fallamos mapeando');
+      print(e);
+    }
   }
 
   Stream<List<PlayerModel>> get players {

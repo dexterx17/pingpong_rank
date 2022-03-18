@@ -30,6 +30,7 @@ class _SettingsFormState extends State<SettingsForm> {
 
         if(snapshot.hasData){
 
+          UserData userData = snapshot.data;
 
           return Form(
               key: _formKey,
@@ -42,13 +43,14 @@ class _SettingsFormState extends State<SettingsForm> {
                   SizedBox(height: 20.0,),
 
                   TextFormField(
+                    initialValue: userData.nombre,
                     validator: (value) => value.isEmpty ? 'Ingrese un nombre' : null,
                     onChanged: (value) => setState(() => _name = value),
                   ),
                   SizedBox(height:20.0),
 
                   DropdownButtonFormField(
-                    value: _apellido,
+                    value: _apellido ?? userData.nombre,
                     items: sugars.map((e) {
                       return DropdownMenuItem(
                           value: e,
@@ -61,7 +63,7 @@ class _SettingsFormState extends State<SettingsForm> {
                   SizedBox(height:20.0),
 
                   Slider(
-                    value: (_edad ?? 100).toDouble(),
+                    value: (_edad ?? userData.edad).toDouble(),
                     activeColor: Colors.brown[_edad ?? 100],
                     inactiveColor: Colors.brown[_edad ?? 100],
                     min:0.0,
@@ -77,6 +79,8 @@ class _SettingsFormState extends State<SettingsForm> {
                       print(_name);
                       print(_apellido);
                       print(_edad);
+
+
                     },
                   )
 

@@ -2,11 +2,15 @@
 class PlayerModel{
   PlayerModel({
     this.nombre,
-    this.apellido,
-    this.edad
+    this.nacionalidad,
+    this.sexo,
+    this.edad,
+    this.bod
   });
 
   String nombre;
-  String apellido;
+  String nacionalidad;
+  String sexo;
   int edad;
+  DateTime bod;
 }
